@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/environment/tilemap-block.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/environment/tilemap-red.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/environment/tilemap-square-01.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/environment/tilemap-square-02.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/environment/tilemap-square-03.jpg" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="Node" type="Node"]
+
+[node name="Grey" type="Sprite" parent="." index="0"]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Grey" index="0"]
+
+position = Vector2( 12, 12 )
+scale = Vector2( 0.375, 0.375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grey/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Red" type="Sprite" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 48, 0 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Red" index="0"]
+
+position = Vector2( 12, 12 )
+scale = Vector2( 0.375, 0.375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Red/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="BlueDiamond" type="Sprite" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 96, 0 )
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueDiamond" index="0"]
+
+position = Vector2( 12, 12 )
+scale = Vector2( 0.375, 0.375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueDiamond/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="OrangeDiamond" type="Sprite" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 144, 0 )
+texture = ExtResource( 4 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OrangeDiamond" index="0"]
+
+position = Vector2( 12, 12 )
+scale = Vector2( 0.375, 0.375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrangeDiamond/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="PinkDiamond" type="Sprite" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 192, 0 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PinkDiamond" index="0"]
+
+position = Vector2( 12, 12 )
+scale = Vector2( 0.375, 0.375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinkDiamond/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+
