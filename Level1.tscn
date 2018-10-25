@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=6]
 [ext_resource path="res://assets/snapshot/library.png" type="Texture" id=7]
 
-[node name="Level1" type="Node" index="0"]
+[node name="Level1" type="Node"]
 
 [node name="TileMap" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -16,7 +16,7 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 
 
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 48, 1008 )
+position = Vector2( 1056, 552 )
 _sections_unfolded = [ "Pickable", "Transform" ]
 
 [node name="enemy1" type="Sprite" parent="." index="2"]

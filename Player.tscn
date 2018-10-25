@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/starbear/idle.png" type="Texture" id=2]
-[ext_resource path="res://assets/starbear/grab.png" type="Texture" id=3]
-[ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=4]
-[ext_resource path="res://assets/starbear/dash.png" type="Texture" id=5]
-[ext_resource path="res://assets/starbear/ground.png" type="Texture" id=6]
-[ext_resource path="res://assets/starbear/swipe.png" type="Texture" id=7]
-[ext_resource path="res://assets/starbear/slash.png" type="Texture" id=8]
+[ext_resource path="res://assets/starbear/swim.png" type="Texture" id=3]
+[ext_resource path="res://assets/starbear/grab.png" type="Texture" id=4]
+[ext_resource path="res://assets/starbear/swipe.png" type="Texture" id=5]
+[ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=6]
+[ext_resource path="res://assets/starbear/dash.png" type="Texture" id=7]
+[ext_resource path="res://assets/starbear/ground.png" type="Texture" id=8]
+[ext_resource path="res://assets/starbear/slash.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -22,36 +23,41 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "swim",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "grab",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "ship-pants",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "dash",
+"name": "swipe",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "ground",
+"name": "ship-pants",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "swipe",
+"name": "dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "ground",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "slash",
 "speed": 5.0
@@ -83,10 +89,11 @@ shape = SubResource( 1 )
 [node name="Bodysprite" type="AnimatedSprite" parent="." index="1"]
 
 frames = SubResource( 2 )
-animation = "swipe"
+animation = "idle"
 
 [node name="Areaswipe" type="Area2D" parent="." index="2"]
 
+visible = false
 show_behind_parent = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -110,6 +117,44 @@ position = Vector2( 64, 0 )
 shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="Timers" type="Node" parent="." index="3"]
+
+[node name="swim_timer_x" type="Timer" parent="Timers" index="0"]
+
+process_mode = 1
+wait_time = 0.3
+one_shot = true
+autostart = false
+
+[node name="no_input_x" type="Timer" parent="Timers" index="1"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[node name="swim_timer_y" type="Timer" parent="Timers" index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="no_input_y" type="Timer" parent="Timers" index="3"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
 [connection signal="animation_finished" from="Areaswipe/Swipesprite" to="." method="_on_Swipesprite_animation_finished"]
+
+[connection signal="timeout" from="Timers/swim_timer_x" to="." method="_on_swim_timer_x_timeout"]
+
+[connection signal="timeout" from="Timers/no_input_x" to="." method="_on_no_input_x_timeout"]
+
+[connection signal="timeout" from="Timers/swim_timer_y" to="." method="_on_swim_timer_y_timeout"]
+
+[connection signal="timeout" from="Timers/no_input_y" to="." method="_on_no_input_y_timeout"]
 
 
