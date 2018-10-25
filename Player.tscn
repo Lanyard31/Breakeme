@@ -2,12 +2,12 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/starbear/idle.png" type="Texture" id=2]
-[ext_resource path="res://assets/starbear/swim.png" type="Texture" id=3]
-[ext_resource path="res://assets/starbear/grab.png" type="Texture" id=4]
-[ext_resource path="res://assets/starbear/swipe.png" type="Texture" id=5]
-[ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=6]
-[ext_resource path="res://assets/starbear/dash.png" type="Texture" id=7]
-[ext_resource path="res://assets/starbear/ground.png" type="Texture" id=8]
+[ext_resource path="res://assets/starbear/swipe.png" type="Texture" id=3]
+[ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=4]
+[ext_resource path="res://assets/starbear/dash.png" type="Texture" id=5]
+[ext_resource path="res://assets/starbear/ground.png" type="Texture" id=6]
+[ext_resource path="res://assets/starbear/grab.png" type="Texture" id=7]
+[ext_resource path="res://assets/starbear/swim.png" type="Texture" id=8]
 [ext_resource path="res://assets/starbear/slash.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -23,35 +23,35 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": false,
-"name": "swim",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "grab",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "swipe",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "ship-pants",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "dash",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "ground",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "grab",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "swim",
+"speed": 3.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]

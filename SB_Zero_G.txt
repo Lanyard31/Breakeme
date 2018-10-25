@@ -1,0 +1,5 @@
+#is SB floating free in space
+Step up the Speed incrementally
+Fast lerp up
+Slow lerp down
+Special lerp control around 0
