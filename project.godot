@@ -14,11 +14,14 @@ config/name="Break me"
 run/main_scene="res://Root.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+globalplayer="*res://globalplayer.gd"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 
 [importer_defaults]
 
@@ -40,6 +43,11 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[input]
+
+Z=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
 
 [rendering]
 
