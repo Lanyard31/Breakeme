@@ -16,15 +16,22 @@ var grabbing = false
 var grabbed = false
 var throwing = false
 var rotation_factor = 0.1
+var sendposition = Vector2()
+var grabtarget
 
 
 func _ready():
 	pass
 
 func _process(delta):
+	
+	
+	#control logic below
 	if Input.is_action_just_pressed("Z"):
 		if grabbed == true:
 			throwing = true
+		elif grabbing == true:
+			grabbing = false
 		else:
 			grabbing = true
 	
@@ -159,49 +166,61 @@ func _process(delta):
 				
 func _physics_process(delta):
 	move_and_slide(velocity, Vector2(0, 0))
-	throw()
-	#grabcode
-	for i in range(get_slide_count() - 1):
-			var collision = get_slide_collision(i)
-			if collision.collider.is_in_group("enemy"):
-				#print(collision.collider.name)
-				#throw(collision.collider)
-				grab(collision.collider)
-				#collision.collider.queue_free()
-				
-				
-func throw():
+	#initial grabcode
+	if grabbing == true:
+		for i in range(get_slide_count() - 1):
+				var collision = get_slide_collision(i)
+				if collision.collider.is_in_group("enemy"):
+					#print(collision.collider.name)
+					#throw(collision.collider)
+					grab(collision.collider)
+					grabtarget = collision.collider
+					grabbed = true
+					#collision.collider.queue_free()
+	if grabbed == true:
+		grabbed(grabtarget)
 	if throwing == true:
-		throwing = false
-		grabbed = false
-		$Bodysprite.play("idle")
-		globalplayer.globalgrabbedenemy = ("enemyinstance")
-		for i in range(0, get_child_count()):
-			get_child(i)
+		throw(grabtarget)
+				
+				
+func throw(grabtarget):
+	throwing = false
+	grabbed = false
+	$Bodysprite.play("idle")
+	grabtarget.thrown($grabpoint.position, self.rotation)
+	
+	
+		#for i in range(0, get_child_count()):
+		#	get_child(i)
 			#print(get_child(i))
-			if get_child(i).has_method("thrown_delete"):
+		#	if get_child(i).has_method("thrown_delete"):
 				#print(get_child(i))
-				var enemyname = get_child(i).get_name()
-				get_child(i).thrown_delete()
-				emit_signal("thrownenemy", enemyname, $grabpoint.global_position, self.rotation)
-		self.rotation = 0
+		#		var enemyname = get_child(i).get_name()
+		#		get_child(i).thrown_delete()
+		#		emit_signal("thrownenemy", enemyname, $grabpoint.global_position, self.rotation)
+	self.rotation = 0
 				
 		#collider.queue_free()
 
 func grab(collider):
 	if grabbing == true:
 		grabbing = false
-		grabbed = true
-		$Bodysprite.play("grab")
-		var grabbedenemy = load("res://Enemy.tscn")
-		var enemyinstance = grabbedenemy.instance()
-		#enemyinstance.set_name("enemyinstance")
-		globalplayer.globalgrabbedenemy = ("enemyinstance")
-		collider.queue_free()
-		add_child(enemyinstance)
-		enemyinstance.global_position = $grabpoint.global_position
 		velocity.x = 0
 		velocity.y = 0
+		if collider.has_method("grabface"):
+			collider.grabface()
+		
+func grabbed(grabtarget):
+	sendposition = $grabpoint.global_position
+	$Bodysprite.play("grab")
+	if grabtarget.has_method("imgrabbed"):
+		grabtarget.imgrabbed(sendposition)
+		#var grabbedenemy = load("res://Enemy.tscn")
+		#var enemyinstance = grabbedenemy.instance()
+		#globalplayer.globalgrabbedenemy = ("enemyinstance")
+		#collider.queue_free()
+		#add_child(enemyinstance)
+		#enemyinstance.global_position = $grabpoint.global_position
 
 	
 	#make new but grabbed

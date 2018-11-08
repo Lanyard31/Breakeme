@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=2]
-[ext_resource path="res://assets/starbear/swipe.png" type="Texture" id=3]
-[ext_resource path="res://assets/starbear/swim.png" type="Texture" id=4]
-[ext_resource path="res://assets/starbear/idle.png" type="Texture" id=5]
-[ext_resource path="res://assets/starbear/dash.png" type="Texture" id=6]
-[ext_resource path="res://assets/starbear/ground.png" type="Texture" id=7]
-[ext_resource path="res://assets/starbear/grab.png" type="Texture" id=8]
+[ext_resource path="res://assets/starbear/idle.png" type="Texture" id=2]
+[ext_resource path="res://assets/starbear/grab.png" type="Texture" id=3]
+[ext_resource path="res://assets/starbear/ship-pants.png" type="Texture" id=4]
+[ext_resource path="res://assets/starbear/swim.png" type="Texture" id=5]
+[ext_resource path="res://assets/starbear/ground.png" type="Texture" id=6]
+[ext_resource path="res://assets/starbear/swipe.png" type="Texture" id=7]
+[ext_resource path="res://assets/starbear/dash.png" type="Texture" id=8]
 [ext_resource path="res://assets/starbear/slash.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -20,37 +20,37 @@ radius = 38.0526
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "ship-pants",
+"name": "idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "swipe",
+"name": "grab",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "ship-pants",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "swim",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "dash",
+"name": "ground",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "ground",
+"name": "swipe",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "grab",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "idle",
+"name": "dash",
 "speed": 5.0
 } ]
 
@@ -69,7 +69,7 @@ custom_solver_bias = 0.0
 radius = 17.0
 height = 70.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 64, 64 )
 input_pickable = false
